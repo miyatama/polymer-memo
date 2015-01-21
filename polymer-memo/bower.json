@@ -1,7 +1,6 @@
 {
   "name": "polymer-memo",
   "version": "0.0.1",
-  "description": "Polymer tutorial for read-only social network app",
   "license": "MIT",
   "private": true,
   "ignore": [
