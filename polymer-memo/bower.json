@@ -1,0 +1,39 @@
+{
+  "name": "polymer-memo",
+  "version": "0.0.1",
+  "description": "Polymer tutorial for read-only social network app",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.1",
+    "core-icon-button": "Polymer/core-icon-button#~0.5.1",
+    "core-drawer-panel": "Polymer/core-drawer-panel#~0.5.1",
+    "font-roboto": "Polymer/font-roboto#~0.5.1",
+    "core-header-panel": "Polymer/core-header-panel#~0.5.1",
+    "core-toolbar": "Polymer/core-toolbar#~0.5.1",
+    "paper-tabs": "Polymer/paper-tabs#~0.5.1",
+    "paper-fab": "Polymer/paper-fab#~0.5.1",
+    "paper-slider": "Polymer/paper-slider#~0.5.1",
+    "paper-radio-group": "Polymer/paper-radio-group#~0.5.1",
+    "paper-dialog": "Polymer/paper-dialog#~0.5.1",
+    "paper-radio-button": "Polymer/paper-radio-button#~0.5.1",
+    "paper-checkbox": "Polymer/paper-checkbox#~0.5.1",
+    "paper-toast": "Polymer/paper-toast#~0.5.1",
+    "paper-toggle-button": "Polymer/paper-toggle-button#~0.5.1",
+    "paper-shadow": "Polymer/paper-shadow#~0.5.1",
+    "paper-input": "Polymer/paper-input#~0.5.1",
+    "core-ajax": "Polymer/core-ajax#~0.5.1",
+    "core-icon": "Polymer/core-icon#~0.5.1",
+    "core-icons": "Polymer/core-icons#~0.5.1",
+    "core-iconset": "Polymer/core-iconset#~0.5.1",
+    "core-iconset-svg": "Polymer/core-iconset-svg#~0.5.1"
+  }
+}

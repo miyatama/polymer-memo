@@ -1,0 +1,33 @@
+<link rel="import" href="../../components/polymer/polymer.html">
+<link rel="import" href="../../components/core-ajax/core-ajax.html">
+
+<polymer-element name="get-memo-service" attributes="memos">
+  <template>
+    <style>
+    :host{
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax"
+               auto
+               url="../../service/getmemo.php"
+               on-core-response="{{memosLoaded}}"
+               handleAs="json">
+    </core-ajax>
+  </template>
+  <script>
+Polymer(
+  'get-memo-service' ,{
+  created: function(){
+    this.memos= [];
+  },
+  memosLoaded: function(){
+    this.memos = this.$.ajax.response.slice(0);
+  },
+  go: function(){
+    this.$.ajax.go();
+  }
+
+  });
+  </script>
+</polymer-element>

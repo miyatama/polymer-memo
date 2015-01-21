@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>
+        俺もマテリアルでメモとか取りたい。
+    </title>
+    <link rel="stylesheet" href="css/app.css" shim-shadowdom>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="components/webcomponentsjs/webcomponents.js"></script>
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="main.js"></script>
+    <link rel="import" href="elements.html">
+</head>
+<body unresolved onclick="onBodyClick(event);">
+<core-drawer-panel forceNarrow>
+<core-header-panel-ex drawer class="drawermenuheader">
+
+<core-toolbar-ex >
+  <span flex>material menu</span>
+</core-toolbar-ex>
+<div class="drawermenupanel">
+  <paper-button class="drawermenubutton" onclick="onClickDrawermenubuttonAddmemo()">+Add</paper-button><br/>
+  <paper-button class="drawermenubutton" onclick="onClickDrawermenubuttonClearAll()">Clear All</paper-button>
+</div>
+</core-header-panel-ex>
+
+<core-header-panel-ex main mode="waterfall-tall">
+
+<core-toolbar-ex class="maintoolbar tall">
+  <paper-icon-button icon="menu" title="menu"></paper-icon-button>
+  <span flex>メモ的なやつを見たり書いたり</span>
+  <paper-icon-button icon="search"></paper-icon-button>
+  <paper-icon-button icon="more-vert"></paper-icon-button>
+  <paper-fab-ex src="./img/yoine.png" class="tall"></paper-fab-ex> 
+</core-toolbar-ex>
+<main class="container" layout vertical center>
+  <memo-list show="all"></memo-list>
+  <paper-dialog heading="メモを登録する" transision="core-transision-center" style="width:75%" class="dialog_add_memo">
+    <paper-input-decorator label="title" >
+      <!-- なぜかclassの指定が効かないので、styleで対応 -->
+      <input type="text" id="dialog_input_title" style="width: 90%" class="dialog_input_title"></input>
+    </paper-input-decorator>
+    <paper-input-decorator label="memo">
+      <textarea id="dialog_input_memo" style="width: 90%;height: 100px" class="dialog_input_memo"></textarea>
+    </paper-input-decorator>
+    <paper-button onclick="onClickDialogCancel(this)" class="dialog_input_button" dismissive>cancel</paper-button>
+    <paper-button onclick="onClickDialogAddMemo(this)" class="dialog_input_button" dismissive default>submit</paper-button>
+  </paper-dialog>
+  <paper-toast class="toast-message"></paper-toast>
+</main>
+</core-header-panel-ex>
+</core-drawer-panel>
+<script>
+initializeOrenoMaterial();
+</script>
+</body>
+</html>

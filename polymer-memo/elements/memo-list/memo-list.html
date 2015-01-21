@@ -1,0 +1,56 @@
+<link rel="import" href="../../components/polymer/polymer.html">
+<link rel="import" href="../get-memo-service/get-memo-service.html">
+<link rel="import" href="../memo-card/memo-card.html">
+
+<polymer-element name="memo-list" attributes="show">
+  <template>
+    <style>
+    :host{
+      display: block;
+      width: 100%;
+    }
+    memo-card{
+      margin-bottom: 20px;
+    }
+    </style>
+    <get-memo-service id="service" memos="{{memos}}"></get-memo-service>
+    <div layout vertical center>
+      <template id="memo-list-repeat-template" repeat="{{memo in memos}}">
+      <memo-card on-remove-memo-tap="{{handleRemoveMemo}}">
+          <h2>{{memo.title}}</h2>
+          <h1>{{memo.memo}}</h1>
+      </memo-card>
+      </template>
+    </div>
+
+  </template>
+  <script>
+  Polymer('memo-list',{
+    reload: function(){
+      this.$.service.go();
+    },
+    handleRemoveMemo: function(event,detail,sender){
+
+      var memo = sender.templateInstance.model.memo;
+      var parameters = {
+        "id":memo.id
+      };
+      $.ajax({
+        type: "POST",
+        url: "./service/removememo.php",
+        data: parameters,
+        success: function(data){
+          if (data.succeed){
+            var memolist = document.querySelector('memo-list');
+            memolist.reload();
+          }else{
+            //show error message
+            var toast = document.querySelector('.toast-message');
+            toast.text = data.message;
+            toast.show();
+          }
+        }});
+    }
+  });
+  </script>
+</polymer-elemet>

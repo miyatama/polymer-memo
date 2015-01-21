@@ -1,0 +1,97 @@
+<link rel="import" href="../../components/polymer/polymer.html">
+<link rel="import" href="../../components/paper-icon-button/paper-icon-button.html">
+
+<polymer-element name="memo-card">
+  <template>
+    <style>
+    :host{
+      display: block;
+      position:relative;
+      background-color:  #b2ebf2;
+      padding: 10px;
+      width: 100%;
+      height:auto;
+      font-size: 1.0rem;
+      font-weight: 300;
+      border-radius: 10px;
+      -webkit-transition: 0.18s ease-in-out;  
+      -moz-transition: 0.18s ease-in-out;  
+      -o-transition: 0.18s ease-in-out;  
+      transition: opacity 0.18s ease-in-out;
+      box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.4);
+    }
+    .memo-title{
+      margin-bottom: 20px;
+    }
+    .titlecontainer{
+      width: 100%;
+      margin: 20px;
+      height:70px;
+    }
+    .textcontainer{
+      width: 100%;
+    }
+    .removeicon{
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      -webkit-transition: 0.18s ease-in-out;  
+      -moz-transition: 0.18s ease-in-out;  
+      -o-transition: 0.18s ease-in-out;  
+      transition: opacity 0.18s ease-in-out;
+    }
+    .removeiconshow{
+      opacity: 1;
+    }
+    .removeiconhide{
+      opacity: 0;
+    }
+    .memohidden{
+      opacity: 0;
+    }
+    polyfill-next-selector{ content: '.memo-title h2';}
+    .memo-title ::content h2{
+      font-size: 2.0rem;
+      font-weight: 300;
+    }
+    polyfill-next-selector{ content: '.memo-title h1';}
+    .memo-title ::content h1{
+      margin: 0;
+      font-size: 1.0rem;
+      font-weight: 300;
+    }
+    </style>
+
+    <div id="cardMainPanel" class="memo-title" layout vertical center
+         on-mouseover='{{handleOnMouseOver}}'
+         on-mouseout='{{handleOnMouseOut}}' >
+      <div class="titlecontainer">
+        <content select="h2"></content>
+      </div>
+      <div class="textcontainer">
+        <content select="h1"></content>
+      </div>
+      <paper-icon-button icon="cancel" id="removeMemoButton" class="removeicon removeiconhide" on-tap="{{handleOnClickRemoveMemo}}"></paper-icon-button>
+    </div>
+    <content></content>
+  </template>
+  <script>
+  Polymer(
+    'memo-card',{ 
+    handleOnMouseOver: function(){
+      this.$.removeMemoButton.classList.add("removeiconshow");
+      this.$.removeMemoButton.classList.remove("removeiconhide");
+
+    },
+    handleOnMouseOut: function(){
+      this.$.removeMemoButton.classList.remove("removeiconshow");
+      this.$.removeMemoButton.classList.add("removeiconhide");
+    },
+    handleOnClickRemoveMemo: function(){
+      this.classList.add("memohidden");
+      this.fire('remove-memo-tap');
+    }
+
+  });
+  </script>
+</polymer-element>
